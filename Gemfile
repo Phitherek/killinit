@@ -49,3 +49,4 @@ end
 gem 'devise'
 gem 'haml-rails'
 gem 'forgery'
+gem 'bootstrap-sass'

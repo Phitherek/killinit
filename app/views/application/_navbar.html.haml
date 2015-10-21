@@ -1,0 +1,18 @@
+- account_options_active = false if account_options_active.nil?
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#main-navbar-collapse", "aria-expanded": "false"}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Killin' It", root_path, class: "navbar-brand"
+    .collapse.navbar-collapse#main-navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user.nil?
+          %li= link_to "Register", new_user_registration_path
+          %li= link_to "Login", new_user_session_path
+        - else
+          %li{class: account_options_active ? "active" : ""}= link_to current_user.username, "#"
+          %li= link_to "Logout", destroy_user_session_path, method: "delete"

@@ -10,4 +10,5 @@
     .container
       .row
         .col-md-12
+          = render partial: "application/navbar", locals: {account_options_active: @navbar_account_options_active.nil? ? false : @navbar_account_options_active}
           = yield

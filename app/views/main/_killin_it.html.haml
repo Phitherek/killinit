@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-body
+    %b You' re killin' it!
+    from
+    %b from_user.username
+    to
+    %b to_user.username
+    at
+    %i elem.created_at.to_s
+  - unless elem.message.nil? || elem.message.empty?
+    .panel-footer
+      = elem.message

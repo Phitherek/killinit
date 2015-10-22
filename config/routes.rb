@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,4 +55,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root :to => "main#index"
+  get '/helper/parameterize', to: "helper#parameterize"
+  get '/given', to: "main#killin_its_given"
+  get '/received', to: "main#killin_its_received"
+  get '/:key/given', to: "main#profile_killin_its_given"
+  get '/:key/received', to: "main#profile_killin_its_received"
+  get '/:key', to: "main#profile"
 end

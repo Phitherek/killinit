@@ -1,12 +1,17 @@
 .panel.panel-default
-  .panel-body
-    %b You' re killin' it!
-    from
-    %b from_user.username
-    to
-    %b to_user.username
-    at
-    %i elem.created_at.to_s
+  .panel-body.middle-vertical
+    %p.flex-child.no-left-margin
+      %b You' re killin' it!
+      from
+      %b= link_to elem.from_user.username, profile_path(elem.from_user.userkey)
+      to
+      %b= link_to elem.to_user.username, profile_path(elem.to_user.userkey)
+      at
+      %i= elem.created_at.to_s
+    - if elem.from_user == current_user || current_user.admin
+      .btn-group.pull-right.flex-child.no-right-margin
+        = button_to "Edit", edit_killin_it_path(elem.id), method: :get, class: "btn btn-warning", form_class: "force-inline"
+        = button_to "Delete", killin_it_path(elem.id), method: :delete, class: "btn btn-danger", form_class: "force-inline"
   - unless elem.message.nil? || elem.message.empty?
     .panel-footer
       = elem.message

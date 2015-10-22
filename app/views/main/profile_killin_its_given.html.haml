@@ -1,0 +1,9 @@
+= render partial: "profile_navs", locals: {active: :killin_its_given}
+%h3= "Killin' Its given by #{@user.username}"
+- if @killin_its.empty?
+  .alert.alert-info= "#{@user.username} has not yet given any Killin' Its to anyone!"
+- else
+  .infinite_killin_it_listing
+    = render partial: "killin_its_listing", locals: {killin_its: @killin_its}
+  .endless_pagination
+    = render partial: "endless_pagination", locals: {objects: @killin_its}

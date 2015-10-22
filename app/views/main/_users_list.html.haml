@@ -1,0 +1,15 @@
+- if users.empty?
+  .alert.alert-info= "No users matching your query!"
+- else
+  .list-group
+    - users.each do |u|
+      %a{href: profile_path(u.userkey), class: "list-group-item"}
+        %h3.list-group-item-heading
+          = u.username
+          - if !u.firstname.nil? || !u.firstname.empty? || !u.lastname.nil? || !u.lastname.empty?
+            %span.text-muted= "(" + u.firstname + " " + u.lastname + ")"
+        %p.text-muted.list-group-item-text
+          Email:
+          = u.email
+          , key:
+          = u.userkey

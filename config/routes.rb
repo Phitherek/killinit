@@ -58,7 +58,8 @@ Rails.application.routes.draw do
   get '/helper/parameterize', to: "helper#parameterize"
   get '/given', to: "main#killin_its_given"
   get '/received', to: "main#killin_its_received"
-  get '/:key/given', to: "main#profile_killin_its_given"
-  get '/:key/received', to: "main#profile_killin_its_received"
-  get '/:key', to: "main#profile"
+  resources :killin_its, only: [:create, :edit, :update, :destroy]
+  get '/:key/given', to: "main#profile_killin_its_given", as: :profile_given
+  get '/:key/received', to: "main#profile_killin_its_received", as: :profile_received
+  get '/:key', to: "main#profile", as: :profile
 end

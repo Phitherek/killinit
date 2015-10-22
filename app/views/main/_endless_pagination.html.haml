@@ -1,0 +1,5 @@
+.btn-group.btn-group-justified
+  - if objects.last_page?
+    = link_to "No more entries", "#", class: "btn btn-default btn-lg"
+  - else
+    = link_to_next_page(objects, "Next Page", remote: true, class: "btn btn-default btn-lg")

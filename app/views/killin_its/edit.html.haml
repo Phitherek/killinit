@@ -1,0 +1,8 @@
+%h3= "Editing Killin' It from #{@killin_it.from_user.username} to #{@killin_it.to_user.username}"
+= form_for @killin_it, html: {class: "form-horizontal"}, method: :put do |f|
+  .form-group
+    .col-md-6
+      = f.text_area :message, rows: 10, cols: 30, placeholder: "Additional message (optional)", class: "form-control"
+  .form-group
+    .col-md-6
+      = f.submit "Update", class: "btn btn-warning"

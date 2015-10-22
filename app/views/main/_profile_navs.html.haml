@@ -1,4 +1,4 @@
 %ul.nav.nav-pills.nav-justified
-  %li{role: "presentation", class: active == :profile ? "active" : ""}= link_to "Profile", "#"
-  %li{role: "presentation", class: active == :killin_its_given ? "active" : ""}= link_to "Killin' Its given", "#"
-  %li{role: "presentation", class: active == :killin_its_received ? "active" : ""}= link_to "Killin' Its received", "#"
+  %li{role: "presentation", class: active == :profile ? "active" : ""}= link_to "Profile", profile_path(@user.userkey)
+  %li{role: "presentation", class: active == :killin_its_given ? "active" : ""}= link_to "Killin' Its given", profile_given_path(@user.userkey)
+  %li{role: "presentation", class: active == :killin_its_received ? "active" : ""}= link_to "Killin' Its received", profile_received_path(@user.userkey)

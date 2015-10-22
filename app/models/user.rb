@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   before_save :parameterize_userkey
 
+  scope :like, ->(q) { where("UPPER(username) LIKE UPPER('%#{q}%') OR UPPER(userkey) LIKE UPPER('%#{q}%') OR UPPER(firstname) LIKE UPPER('%#{q}%') OR UPPER(lastname) LIKE UPPER('%#{q}%') OR UPPER(email) LIKE UPPER('%#{q}%')")}
+
   private
 
   def parameterize_userkey

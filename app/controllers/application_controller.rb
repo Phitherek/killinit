@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) << :lastname
       devise_parameter_sanitizer.for(:account_update) << :userkey
   end
+
+  def render_error sym
+      if sym == :notfound
+          render "errors/notfound", status: :notfound, layout: "error" and return
+      elsif sym == :forbidden
+          render "errors/forbidden", status: :forbidden, layout: "error" and return
+      end
+  end
 end

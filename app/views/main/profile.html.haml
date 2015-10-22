@@ -1,0 +1,28 @@
+- if @user == current_user
+  = render partial: "navs", locals: {active: :profile}
+- else
+  = render partial: "profile_navs", locals: {active: :profile}
+%h1
+  = @user.username
+  - if !@user.firstname.nil? || !@user.firstname.empty? || !@user.lastname.nil? || !@user.lastname.empty?
+    %span.text-muted= "(" + @user.firstname + " " + @user.lastname + ")"
+%dl.dl-horizontal
+  %dt Email
+  %dd= @user.email
+  %dt Joined
+  %dd= @user.created_at
+  %dt Killin' Its given
+  %dd= @user.killin_its_from.count
+  %dt Killin' Its received
+  %dd= @user.killin_its_to.count
+- if @user == current_user
+  = link_to "Edit your profile", edit_user_registration_path
+- else
+  = form_for @new_killin_it, html: {class: "form-horizontal"} do |f|
+    .form-group
+      .col-md-6
+        = f.hidden_field :to_user_id, value: @user.id
+        = f.submit "You' re killin' it!", class: "btn btn-success btn-lg"
+    .form-group
+      .col-md-6
+        = f.text_area :message, rows: 10, cols: 30, placeholder: "Additional message (optional)", class: "form-control"

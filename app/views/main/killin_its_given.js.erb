@@ -1,0 +1,2 @@
+$("<%= escape_javascript(render(partial: "killin_its_listing", locals: {killin_its: @killin_its})) %>").appendTo($(".infinite_killin_it_listing"));
+$(".endless_pagination").html("<%= escape_javascript(render(partial: "endless_pagination", locals: {objects: @killin_its})) %>");

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :userkey, presence: true, uniqueness: true
   has_many :killin_its_from, class_name: "KillinIt", foreign_key: :from_user_id
   has_many :killin_its_to, class_name: "KillinIt", foreign_key: :to_user_id
+  has_many :api_tokens
 
   before_save :parameterize_userkey
 

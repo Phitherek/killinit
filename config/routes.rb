@@ -62,4 +62,16 @@ Rails.application.routes.draw do
   get '/:key/given', to: "main#profile_killin_its_given", as: :profile_given
   get '/:key/received', to: "main#profile_killin_its_received", as: :profile_received
   get '/:key', to: "main#profile", as: :profile
+  post '/api/login', to: "api#login", as: :api_login
+  post '/api/search', to: "api#search", as: :api_search
+  post '/api/my_profile', to: "api#my_profile", as: :api_my_profile
+  post '/api/my_given', to: "api#my_given", as: :api_my_given
+  post '/api/my_received', to: "api#my_received", as: :api_my_received
+  post '/api/user_profile', to: "api#user_profile", as: :api_user_profile
+  post '/api/user_given', to: "api#user_given", as: :api_user_given
+  post '/api/user_received', to: "api#user_received", as: :api_user_received
+  post '/api/create_killin_it', to: "api#create_killin_it", as: :api_create_killlin_it
+  post '/api/update_killin_it', to: "api#update_killin_it", as: :api_update_killin_it
+  post '/api/destroy_killin_it', to: "api#destroy_killin_it", as: :api_destroy_killin_it
+  post '/api/logout', to: "api#logout", as: :api_logout
 end
